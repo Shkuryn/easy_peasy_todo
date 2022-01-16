@@ -1,24 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Tasks</h1>
-
-<table>
-  <thead>
+<h2>Your tasks</h2>
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>date</th>
-      <th>Is done</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Date</th>
+      <th scope="col">   <input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;">
+        <span class="pt-1 form-checked-content">Is done
+            </span></th>
+<!--      <th scope="col">Show</th>-->
+      <th scope="col">Edit</th>
+      <th scope="col">Destroy</th>
 
-  <tbody>
+    </tr>
+    </thead>
+
+    <tbody>
     <% @tasks.each do |task| %>
-      <td>
-        <td><%= task.name %></td>
-        <td><%= task.description %></td>
-        <td><%= task.deadline %></td>
+      <tr>
+      <td><%= task.name %></td>
+      <td><%= task.description %></td>
+      <td><%= task.deadline %></td>
         <td>
           <% if task.isDone? %>
             <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked style="font-size: 1.375em;">
@@ -28,28 +33,23 @@
             <input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;">
             <span class="pt-1 form-checked-content">
             </span>
-           <% end %>
-          <%#= task.isDone %>
+          <% end %>
         </td>
-        <td> <span class="pt-1 form-checked-content">
-          <%= link_to 'Show', task %>
-        </span>
-        <td> <span class="pt-1 form-checked-content">
-          <%= link_to 'Edit', edit_task_path(task) %>
-        </span>
 
-<!--        <td><%#= link_to 'Edit', edit_task_path(task) %></td>-->
-        <td>
-          <span class= "p-2 text-dark">
-          <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </span>
-      </td>
+
+        <td>  <%= link_to 'Edit', edit_task_path(task) %>          </td>
+        <td>  <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
       </tr>
     <% end %>
-  </tbody>
-</table>
+       </tbody>
+  </table>
+</div>
+</main>
+</div>
+</div>
 
-<br>
+
 <span class= "btn btn-outline-primary ">
 <%= link_to 'Add new Task', new_task_path %>
 </span>

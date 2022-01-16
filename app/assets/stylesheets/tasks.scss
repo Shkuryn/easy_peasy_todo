@@ -3,7 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body{
   margin: 0;
-  background-image: url("bg3.jpeg");
+   background-image: url("bg3.jpeg");
   background-repeat: no-repeat;
-  background-position: right top;
+  //background-position: top right;
+  background-position-x: 999px;
+  background-position-y: 300px;
 }
