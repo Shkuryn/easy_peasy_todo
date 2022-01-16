@@ -68,3 +68,12 @@ class TasksController < ApplicationController
       params.require(:task).permit(:name, :description, :deadline, :isDone)
     end
 end
+
+def handleChange1
+  console.pp("asas")
+end
+
+
+def handleChange2
+  console.pp("222asas")
+end
