@@ -1,37 +1,44 @@
-<%= form_with(model: task, local: true) do |form| %>
+<%#=   form_with(model: task, local: true )  do |form| %>
+<%= form_for @task, html: { class: "form-vertical center" } do |form| %>
+
   <% if task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
-
       <ul>
-      <% task.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <div class="form-floating mb-3 mt-3">
+    <div class="mb-3">
+      <%= form.label :name, { class: "form-label" } %>
+      <%= form.text_field :name, { class: "form-control", placeholder: "Name" } %>
+    </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :description, { class: "form-label" } %>
+      <%= form.text_area :description, { class: "form-control", placeholder: "Description", cols: 30, rows: 10 } %>
+    </div>
 
-  <div class="field">
-    <%= form.label :deadline %>
-    <%= form.date_select :deadline %>
-  </div>
+    <% if self.instance_variable_get(:@_controller).instance_variable_get(:@_action_name) != "new" %>
+      <div class="field">
+        <%= form.label :Completed %>
+        <%= form.check_box :isDone %>
+      </div>
 
-  <div class="field">
-    <%= form.label :isDone %>
-    <%= form.check_box :isDone %>
-  </div>
+    <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="field">
+      <%= form.label :deadline, { class: "form-label" } %>
+      <%= form.date_select :deadline, { class: "form-control", placeholder: "deadline" } %>
+    </div>
+
+    <div class="btn btn-success">
+      <%= form.submit %>
+    </div>
+
   </div>
 <% end %>

@@ -16,8 +16,6 @@
 /*@import "bootstrap-sprockets";*/
 @import "bootstrap";
 
-
-
 @import "application/breadcrumb";
 @import "application/example";
 @import "application/flash";
@@ -25,12 +23,11 @@
 @import "application/header";
 @import "application/jumbotron";
 
-
 @import "components/alert";
 @import "components/icon";
 
-
 @import "dracula/pygments/dracula";
-
+@import "rails_bootstrap_forms";
 
 @import "simple_form-bootstrap/simple_form-bootstrap";
+
