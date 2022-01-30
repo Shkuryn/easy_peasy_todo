@@ -25,6 +25,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
+        TaskMailer.with(task_name: @task.name).task_create_email.deliver_now
         format.html { redirect_to task_url(@task), notice: "Task was successfully created." }
         format.json { render :show, status: :created, location: @task }
       else
