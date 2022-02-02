@@ -3,7 +3,10 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all.sort_by(&:deadline)
+    @q = Task.ransack(params[:query])
+    @tasks = @q.result()
+
+    # @tasks = Task.all.sort_by(&:deadline)
   end
 
   # GET /tasks/1 or /tasks/1.json
