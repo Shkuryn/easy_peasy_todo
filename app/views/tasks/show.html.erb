@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<p >
   <strong>Name:</strong>
   <%= @task.name %>
 </p>
@@ -19,6 +19,8 @@
   <strong>Isdone:</strong>
   <%= @task.isDone %>
 </p>
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
+<span class="btn btn-success">
+<%= link_to 'Edit', edit_task_path(@task) %>
+</span>
+|
 <%= link_to 'Back', tasks_path %>

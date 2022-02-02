@@ -1,37 +1,48 @@
-<%= form_with(model: task, local: true) do |form| %>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<%#=   form_with(model: task, local: true )  do |form| %>
+<%= form_for @task, html: { class: "form-vertical center" } do |form| %>
   <% if task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
-
       <ul>
-      <% task.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <div class="form-floating mb-3 mt-3">
+    <div class="mb-3">
+      <%= form.label :name, { class: "form-label" } %>
+      <%= form.text_field :name, { class: "form-control", placeholder: "Name" } %>
+    </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :description, { class: "form-label" } %>
+      <%= form.text_area :description, { class: "form-control", placeholder: "Description", cols: 30, rows: 10 } %>
+    </div>
 
-  <div class="field">
-    <%= form.label :deadline %>
-    <%= form.date_select :deadline %>
-  </div>
+    <% if self.instance_variable_get(:@_controller).instance_variable_get(:@_action_name) != "new" %>
+      <div class="field">
+        <%= form.label :Completed %>
+        <%= form.check_box :isDone %>
+      </div>
 
-  <div class="field">
-    <%= form.label :isDone %>
-    <%= form.check_box :isDone %>
-  </div>
+    <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="field">
+      <%= form.label :deadline, { class: "form-label" } %>
+      <%= form.date_select :deadline, { class: "form-control", placeholder: "deadline" } %>
+    </div>
+
+
+
+      <div class="btn btn-outline-primary btn-lg">
+        <%= form.submit %>
+      </div>
+
   </div>
 <% end %>
