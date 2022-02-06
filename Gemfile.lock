@@ -151,6 +151,7 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
+    rack-timeout (0.6.0)
     rails (5.2.6)
       actioncable (= 5.2.6)
       actionmailer (= 5.2.6)
@@ -270,6 +271,7 @@ DEPENDENCIES
   mailcatcher
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
+  rack-timeout
   rails (~> 5.2.6)
   ransack!
   sass-rails (~> 5.0)
