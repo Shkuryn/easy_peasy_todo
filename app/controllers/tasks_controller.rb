@@ -3,7 +3,10 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all
+    @q = Task.ransack(params[:query])
+    @tasks = @q.result()
+
+    # @tasks = Task.all.sort_by(&:deadline)
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -25,6 +28,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
+        TaskMailer.with(task_name: @task.name).task_create_email.deliver_now
         format.html { redirect_to task_url(@task), notice: "Task was successfully created." }
         format.json { render :show, status: :created, location: @task }
       else
